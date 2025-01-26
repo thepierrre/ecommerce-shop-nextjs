@@ -13,7 +13,7 @@ export default function NavLinks() {
   return (
     <>
       {links.map((link) => (
-        <Link key={link.name} href={link.href}>
+        <Link key={link.name} href={link.href} className="w-4">
           <p>{link.name}</p>
         </Link>
       ))}
