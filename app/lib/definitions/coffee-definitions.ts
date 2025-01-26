@@ -50,7 +50,7 @@ export interface SpecialtyCoffee {
   singleOriginName?: { country: string; region: string; farmName?: string };
   beanType: BeanType;
   blendRatio?: string;
-  roasting_location: string;
+  roastingLocation: string;
   brewMethods: "filter" | "espresso";
   roastLevel: RoastLevel;
   roastLevelDetail?: RoastLevelDetail;
