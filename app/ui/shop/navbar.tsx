@@ -2,10 +2,15 @@ import NavLinks from "@/app/ui/shop/nav-links";
 
 export default function NavBar() {
   return (
-    <div className="bg-red-700">
-      <NavLinks />
-      {/*<button>Account</button>*/}
-      {/*<button>Cart</button>*/}
+    <div className="grid grid-cols-3 border-b border-b-black h-20">
+      <div></div>
+      <div className=" flex justify-center items-center gap-4">
+        <NavLinks />
+      </div>
+      <div className=" flex justify-center items-center gap-4">
+        <button>Account</button>
+        <button>Cart</button>
+      </div>
     </div>
   );
 }

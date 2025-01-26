@@ -3,17 +3,17 @@
 import Link from "next/link";
 
 const links = [
-  { name: "Home", href: "/" },
-  { name: "Filter", href: "/filter " },
-  { name: "Espresso", href: "/epresso" },
-  { name: "Accessories", href: "/accessories " },
+  { name: "Home", href: "/shop" },
+  { name: "Filter", href: "/shop/filter " },
+  { name: "Espresso", href: "/shop/espresso" },
+  { name: "Accessories", href: "/shop/accessories " },
 ];
 
 export default function NavLinks() {
   return (
     <>
       {links.map((link) => (
-        <Link key={link.name} href={link.href} className="w-4">
+        <Link key={link.name} href={link.href}>
           <p>{link.name}</p>
         </Link>
       ))}
