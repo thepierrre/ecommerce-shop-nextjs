@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { Breadcrumbs } from "@/app/ui/shop/breadcrumbs";
 
 export default function Page() {
   const params = useParams<{
@@ -11,8 +12,21 @@ export default function Page() {
   const productName = decodeURI(params.name);
 
   return (
-    <div>
-      <h1 className="text-center text-5xl my-12">{productName}</h1>
+    <div className="my-8">
+      <Breadcrumbs
+        breadcrumbs={[
+          {
+            label: "All Coffees",
+            href: "/shop/all-coffees",
+          },
+          {
+            label: "Filter Coffees",
+            href: "/shop/filter-coffees",
+            active: true,
+          },
+        ]}
+      />
+      <h1 className="text-4xl">{productName}</h1>
     </div>
   );
 }
