@@ -2,7 +2,7 @@ import NavLinks from "@/app/ui/shop/nav-links";
 
 export default function NavBar() {
   return (
-    <div className="grid grid-cols-3 border-b border-b-black h-20 bg-gray-300">
+    <div className="grid grid-cols-3 border-b border-b-black bg-gray-300 h-full">
       <div></div>
       <div className=" flex justify-center items-center gap-4">
         <NavLinks />
