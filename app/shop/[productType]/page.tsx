@@ -1,6 +1,10 @@
 "use client";
 
-import { fetchAllEspressos, fetchAllFilters } from "@/app/lib/actions";
+import {
+  fetchAllCoffees,
+  fetchAllEspressos,
+  fetchAllFilterCoffees,
+} from "@/app/lib/actions";
 import { useParams } from "next/navigation";
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";
@@ -11,8 +15,11 @@ export default function Page() {
   let fetchedCoffees: SpecialtyCoffee[] = [];
 
   switch (productType) {
+    case "all-coffees":
+      fetchedCoffees = fetchAllCoffees();
+      break;
     case "filter-coffees":
-      fetchedCoffees = fetchAllFilters();
+      fetchedCoffees = fetchAllFilterCoffees();
       break;
     case "espresso-coffees":
       fetchedCoffees = fetchAllEspressos();
@@ -51,7 +58,9 @@ export default function Page() {
         ? "Espresso Coffees"
         : productType === "accessories"
           ? "Accessories"
-          : "";
+          : productType === "all-coffees"
+            ? "All Coffees"
+            : "";
 
   return (
     <div className="">

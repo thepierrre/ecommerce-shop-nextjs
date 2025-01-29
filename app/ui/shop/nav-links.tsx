@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const links = [
   { name: "Home", href: "/shop" },
+  { name: "All Coffees", href: "/shop/all-coffees" },
   { name: "Filter", href: "/shop/filter-coffees" },
   { name: "Espresso", href: "/shop/espresso-coffees" },
   { name: "Accessories", href: "/shop/accessories" },
