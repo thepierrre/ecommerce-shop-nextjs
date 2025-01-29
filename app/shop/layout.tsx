@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      <div className="relative top-16">{children}</div>
+      <div className="relative top-16 mx-12">{children}</div>
     </div>
   );
 }
