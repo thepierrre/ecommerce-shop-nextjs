@@ -14,7 +14,7 @@ export default function Page() {
 
   const filterCoffees = fetchedFilterCoffees.map((coffee: SpecialtyCoffee) => (
     <div key={coffee.id} className="border border-black bg-gray-300 w-68 h-112">
-      <Link href={`/shop/filter/${coffee.name}`}>
+      <Link href={`/shop/filter-coffees/${coffee.name}`}>
         <div className="bg-gray-700 h-3/5"></div>
       </Link>
       <div className="p-2">
