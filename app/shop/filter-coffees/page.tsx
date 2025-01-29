@@ -1,10 +1,13 @@
+"use client";
+
 import { fetchAllFilters } from "@/app/lib/actions";
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";
+import { useStore } from "@/app/lib/store/store";
 
 export default function Page() {
   const fetchedFilterCoffees = fetchAllFilters();
-  console.log(fetchedFilterCoffees);
+  const showCartPreview = useStore((state) => state.showCartPreview);
 
   const primaryFlavors = (coffeeId: string) => {
     return fetchedFilterCoffees
@@ -20,12 +23,11 @@ export default function Page() {
       <div className="p-2">
         <h2 className="text-xl text-center mb-4">{coffee.name}</h2>
         <p className="text-center">{primaryFlavors(coffee.id)}</p>
-        <p className="text-center">{coffee.body}</p>
         <p className="text-center">{coffee.roastLevel}</p>
-        <div className="flex flex-row gap-1 justify-center">
-          <p>€{coffee.priceFor250g / 100}</p>
-          <p>(€{coffee.priceFor1kg.toFixed(2)}/kg)</p>
-        </div>
+        <p className="text-center">From €{coffee.priceFor250g / 100}</p>
+      </div>
+      <div className="flex justify-center">
+        <button onClick={() => showCartPreview()}>Add to cart</button>
       </div>
     </div>
   ));
@@ -36,8 +38,6 @@ export default function Page() {
       <div className="flex justify-center">
         <div className="grid grid-cols-4 gap-8">{filterCoffees}</div>
       </div>
-
-      {/*<div className="flex flex-wrap gap-4 mx-16">{filterCoffees}</div>*/}
     </div>
   );
 }
