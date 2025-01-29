@@ -5,8 +5,8 @@ import Link from "next/link";
 const links = [
   { name: "Home", href: "/shop" },
   { name: "Filter", href: "/shop/filter-coffees" },
-  { name: "Espresso", href: "/shop/espresso" },
-  { name: "Accessories", href: "/shop/accessories " },
+  { name: "Espresso", href: "/shop/espresso-coffees" },
+  { name: "Accessories", href: "/shop/accessories" },
 ];
 
 export default function NavLinks() {
