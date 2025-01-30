@@ -9,10 +9,10 @@ type Category =
   | "cups and tumblers"
   | "other";
 
-export interface Accessory {
+export type Accessory = {
   id: string;
   name: string;
   category: Category;
   description: string;
   price: number;
-}
+};

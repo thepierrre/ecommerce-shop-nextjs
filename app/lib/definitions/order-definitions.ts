@@ -1,9 +1,12 @@
-import { Item } from "@/app/lib/definitions/shared";
-import { Address } from "node:cluster";
+import {
+  Address,
+  AccessoryItem,
+  CoffeeItem,
+} from "@/app/lib/definitions/shared";
 
 type ShippingMethod = "express" | "standard";
 
-export interface Order {
+export type Order = {
   id: string;
   isPaid: boolean;
   createdAt: Date;
@@ -13,5 +16,5 @@ export interface Order {
   amount: number;
   shippingMethod: ShippingMethod;
   shippingAddress: Address;
-  items: Item[];
-}
+  items: (AccessoryItem | CoffeeItem)[];
+};

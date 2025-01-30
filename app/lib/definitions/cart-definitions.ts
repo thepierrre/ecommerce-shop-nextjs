@@ -1,10 +1,10 @@
-import { Item } from "@/app/lib/definitions/shared";
+import { AccessoryItem, CoffeeItem } from "@/app/lib/definitions/shared";
 
-export interface Cart {
+export type Cart = {
   id: string;
   userId: string;
   discountCodes: string[];
   totalPrice: number;
   updatedAt: string;
-  items: Item[];
-}
+  items: (AccessoryItem | CoffeeItem)[];
+};

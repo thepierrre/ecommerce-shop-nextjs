@@ -1,4 +1,4 @@
-export interface SpecialtyCoffee {
+export type SpecialtyCoffee = {
   id: string;
   name: string;
   description: string;
@@ -12,20 +12,20 @@ export interface SpecialtyCoffee {
   roastLevelDetail?: RoastLevelDetail;
   processingMethod: ProcessingMethod;
   /*
-      Elevation in metres.
-      Array of one number gives an approximate elevation.
-      Array of two numbers give a range.
-    */
+    Elevation in meters.
+    Array of one number gives an approximate elevation.
+    Array of two numbers gives a range.
+  */
   elevation?: number[];
   certifications: Certification[];
-  decaf: boolean;
+  isDecaf: boolean;
   primaryFlavors: string[];
   secondaryFlavors?: string[];
   body: Body;
   acidity: Acidity;
   priceFor250g: number;
   priceFor1kg: number;
-}
+};
 
 type OriginType = "single origin" | "blend";
 
