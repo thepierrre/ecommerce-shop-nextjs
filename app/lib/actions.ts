@@ -7,16 +7,26 @@ export const fetchAllCoffees = (): SpecialtyCoffee[] => {
   return specialtyCoffees;
 };
 
-export const fetchAllFilterCoffees = (): SpecialtyCoffee[] => {
-  return specialtyCoffees.filter((coffee) => coffee.brewMethod === "filter");
+export const fetchDecafs = (): SpecialtyCoffee[] => {
+  return specialtyCoffees.filter((coffee) => coffee.isDecaf);
 };
 
-export const fetchAllEspressos = (): SpecialtyCoffee[] => {
-  return specialtyCoffees.filter((coffee) => coffee.brewMethod === "espresso");
+export const fetchFilterCoffees = (): SpecialtyCoffee[] => {
+  return specialtyCoffees.filter(
+    (coffee) => coffee.brewMethod === "filter" && !coffee.isDecaf,
+  );
 };
 
-export const fetchCoffeeByName = (coffeeId: string): SpecialtyCoffee | null => {
-  const coffee = specialtyCoffees.find((coffee) => coffee.id === coffeeId);
+export const fetchEspressos = (): SpecialtyCoffee[] => {
+  return specialtyCoffees.filter(
+    (coffee) => coffee.brewMethod === "espresso" && !coffee.isDecaf,
+  );
+};
+
+export const fetchCoffeeByName = (
+  coffeeName: string,
+): SpecialtyCoffee | null => {
+  const coffee = specialtyCoffees.find((coffee) => coffee.name === coffeeName);
   if (!coffee) {
     return null;
   }
