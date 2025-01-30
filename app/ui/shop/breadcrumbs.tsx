@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { clsx } from "clsx";
 
 interface Breadcrumb {
   label: string;
@@ -12,7 +13,12 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
     <ul className="flex">
       {breadcrumbs.map((breadcrumb, index) => (
         <li key={breadcrumb.href}>
-          <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+          <Link
+            href={breadcrumb.href}
+            className={clsx(breadcrumb.active ? "underline" : "")}
+          >
+            {breadcrumb.label}
+          </Link>
           {index < breadcrumbs.length - 1 ? (
             <span className="mx-2">/</span>
           ) : null}

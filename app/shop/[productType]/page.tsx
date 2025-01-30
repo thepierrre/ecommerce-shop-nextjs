@@ -2,8 +2,9 @@
 
 import {
   fetchAllCoffees,
-  fetchAllEspressos,
-  fetchAllFilterCoffees,
+  fetchDecafs,
+  fetchEspressos,
+  fetchFilterCoffees,
 } from "@/app/lib/actions";
 import { useParams } from "next/navigation";
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
@@ -19,10 +20,13 @@ export default function Page() {
       fetchedCoffees = fetchAllCoffees();
       break;
     case "filter-coffees":
-      fetchedCoffees = fetchAllFilterCoffees();
+      fetchedCoffees = fetchFilterCoffees();
       break;
     case "espresso-coffees":
-      fetchedCoffees = fetchAllEspressos();
+      fetchedCoffees = fetchEspressos();
+      break;
+    case "decaf-coffees":
+      fetchedCoffees = fetchDecafs();
       break;
   }
 
@@ -34,9 +38,26 @@ export default function Page() {
       ?.primaryFlavors.join(", ");
   };
 
+  const getProductNameForUrl = (
+    coffeeBrewMethod: "espresso" | "filter",
+    isDecaf: boolean,
+  ): string => {
+    if (isDecaf) {
+      return "decaf-coffees";
+    }
+
+    if (coffeeBrewMethod === "espresso") {
+      return "espresso-coffees";
+    } else {
+      return "filter-coffees";
+    }
+  };
+
   const coffees = fetchedCoffees.map((coffee: SpecialtyCoffee) => (
     <div key={coffee.id} className="border border-black bg-gray-300 w-80 h-112">
-      <Link href={`/shop/${productType}/${coffee.name}`}>
+      <Link
+        href={`/shop/${getProductNameForUrl(coffee.brewMethod, coffee.isDecaf)}/${coffee.name}`}
+      >
         <div className="bg-gray-700 h-3/5"></div>
       </Link>
       <div className="p-2">
@@ -60,7 +81,9 @@ export default function Page() {
           ? "Accessories"
           : productType === "all-coffees"
             ? "All Coffees"
-            : "";
+            : productType === "decaf-coffees"
+              ? "Decaf Coffees"
+              : "";
 
   return (
     <div className="">

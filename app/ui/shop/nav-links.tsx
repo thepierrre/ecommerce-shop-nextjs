@@ -7,7 +7,10 @@ const links = [
   { name: "All Coffees", href: "/shop/all-coffees" },
   { name: "Filter", href: "/shop/filter-coffees" },
   { name: "Espresso", href: "/shop/espresso-coffees" },
+  { name: "Decaf", href: "/shop/decaf-coffees" },
   { name: "Accessories", href: "/shop/accessories" },
+  { name: "Account", href: "/shop/account" },
+  { name: "Cart", href: "/shop/cart" },
 ];
 
 export default function NavLinks() {

@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <NavBar />
       </div>
       {isCartPreviewVisible && (
-        <div className="fixed w-96 h-screen right-0 top-0 bg-gray-500 z-10">
+        <div className="fixed w-112 h-screen right-0 top-0 z-10">
           <CartPreview />
         </div>
       )}
