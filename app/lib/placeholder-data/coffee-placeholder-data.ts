@@ -1,5 +1,9 @@
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
 
+const calculatePriceFor1kg = (priceFor250g: number): number => {
+  return priceFor250g * 4 * 0.9;
+};
+
 export const specialtyCoffees: SpecialtyCoffee[] = [
   {
     id: "38ed1c67-bd76-4f4d-a4cc-3925b546c713",
@@ -27,7 +31,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "light",
     acidity: "high",
     priceFor250g: 1599,
-    priceFor1kg: 1599 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1599),
   },
   {
     id: "a4519867-6b38-4c5a-8fcf-f1ea3e9b10c9",
@@ -54,7 +58,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "medium",
     priceFor250g: 1499,
-    priceFor1kg: 1499 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1499),
   },
   {
     id: "f6cbd4dc-e9e8-4b63-9d45-9b725a682ce6",
@@ -82,7 +86,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "medium",
     priceFor250g: 1399,
-    priceFor1kg: 1399 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1399),
   },
   {
     id: "1c71639b-bbfa-4c7b-91e3-91c8f4de758b",
@@ -110,7 +114,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "light",
     acidity: "high",
     priceFor250g: 1799,
-    priceFor1kg: 1799 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1799),
   },
   {
     id: "04f9e1c2-7097-45a0-a24e-5fc48bd6d589",
@@ -137,7 +141,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "full",
     acidity: "light",
     priceFor250g: 1499,
-    priceFor1kg: 1499 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1499),
   },
   {
     id: "c5a9c05d-3b95-481b-b5ff-4e2b705ecf82",
@@ -164,7 +168,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "light",
     priceFor250g: 1299,
-    priceFor1kg: 1299 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1299),
   },
   {
     id: "42688af2-8bcd-47a3-b8f0-90258f7d86e5",
@@ -191,7 +195,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "medium",
     priceFor250g: 1499,
-    priceFor1kg: 1499 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1499),
   },
   {
     id: "b3ec2e65-8177-46a8-bc5e-e7a6b274a963",
@@ -218,7 +222,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "light",
     acidity: "high",
     priceFor250g: 4999,
-    priceFor1kg: 4999 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(4999),
   },
   {
     id: "75927cfa-d8f1-4664-a6df-00e8e2ac8957",
@@ -241,7 +245,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "full",
     acidity: "light",
     priceFor250g: 1399,
-    priceFor1kg: 1399 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1399),
   },
   {
     id: "a9bf46dc-70f3-4c0a-9c90-78ea58c8a60e",
@@ -268,7 +272,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "light",
     acidity: "high",
     priceFor250g: 1799,
-    priceFor1kg: 1799 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1799),
   },
   {
     id: "e034cf9c-3b79-4f20-a9ea-efcb7d6d4694",
@@ -295,7 +299,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "light",
     acidity: "high",
     priceFor250g: 1599,
-    priceFor1kg: 1599 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1599),
   },
   {
     id: "1a9249a2-b563-497d-9af7-550ed97c640e",
@@ -322,7 +326,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "medium",
     priceFor250g: 1399,
-    priceFor1kg: 1399 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1399),
   },
   {
     id: "d4179bf1-680b-40d1-9c6d-bc95b1d6e6d1",
@@ -349,7 +353,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "medium",
     priceFor250g: 1499,
-    priceFor1kg: 1499 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1499),
   },
   {
     id: "1f2e68d3-7c5b-4b1c-a5b7-1d0a0f3c6174",
@@ -377,7 +381,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "medium",
     acidity: "light",
     priceFor250g: 1299,
-    priceFor1kg: 1299 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1299),
   },
   {
     id: "6c9f0b5b-456e-4aa8-8f93-08f871abe639",
@@ -405,6 +409,6 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
     body: "full",
     acidity: "medium",
     priceFor250g: 1399,
-    priceFor1kg: 1399 * 4 * 0.9,
+    priceFor1kg: calculatePriceFor1kg(1399),
   },
 ];
