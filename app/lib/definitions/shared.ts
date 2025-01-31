@@ -6,16 +6,19 @@ type Item = {
 
 export type AccessoryItem = Item;
 
-type GrindingLevel =
-  | "whole beans"
-  | "for espresso"
-  | "for moka pot"
-  | "for chemex"
-  | "for V60"
-  | "for french press";
+export const grindSizes = [
+  "Whole beans",
+  "For espresso",
+  "For moka pot",
+  "For chemex",
+  "For V60",
+  "For French press",
+] as const;
+
+export type GrindSize = (typeof grindSizes)[number];
 
 export type CoffeeItem = Item & {
-  grindingLevel: GrindingLevel;
+  grindSize: GrindSize;
 };
 
 export type Address = {
