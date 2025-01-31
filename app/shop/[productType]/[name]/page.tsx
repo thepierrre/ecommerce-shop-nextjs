@@ -3,6 +3,8 @@
 import { useParams } from "next/navigation";
 import { Breadcrumbs } from "@/app/ui/shop/breadcrumbs";
 import { fetchCoffeeByName } from "@/app/lib/actions";
+import CartPanel from "@/app/ui/shop/coffee-page/cart-panel";
+import ProductPanel from "@/app/ui/shop/coffee-page/product-panel";
 
 export default function Page() {
   const params = useParams<{
@@ -24,6 +26,10 @@ export default function Page() {
           ? "Decaf Coffees"
           : "";
 
+  if (!product) {
+    return null;
+  }
+
   return (
     <div className="my-8">
       <Breadcrumbs
@@ -39,15 +45,10 @@ export default function Page() {
           },
         ]}
       />
+      <h1 className="text-4xl my-8">{product?.name}</h1>
       <div className="flex gap-16">
-        <div>
-          <h1 className="text-4xl">{product?.name}</h1>
-          <div className="bg-gray-700 h-96 w-72"></div>
-          <p>{product?.description}</p>
-        </div>
-        <div>
-          <button>Add to cart</button>
-        </div>
+        <ProductPanel product={product} />
+        <CartPanel product={product} />
       </div>
     </div>
   );
