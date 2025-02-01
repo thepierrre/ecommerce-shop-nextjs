@@ -7,11 +7,11 @@ export default function Page() {
   type CartItem = [[string, string, string], number];
 
   const splitCartItems: CartItem[] = [];
-  for (const [prodCode, quantity] of Object.entries(
+  for (const [key, value] of Object.entries(
     cart.items as Record<string, number>,
   )) {
-    const keyParts = prodCode.split("—") as [string, string, string];
-    splitCartItems.push([keyParts, quantity]);
+    const keyParts = key.split("—") as [string, string, string];
+    splitCartItems.push([keyParts, value]);
     console.log(splitCartItems[0]);
   }
 
