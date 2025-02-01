@@ -5,7 +5,7 @@ import {
   fetchDecafs,
   fetchEspressos,
   fetchFilterCoffees,
-} from "@/app/lib/actions";
+} from "@/app/lib/actions/fetch-actions";
 import { useParams } from "next/navigation";
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";

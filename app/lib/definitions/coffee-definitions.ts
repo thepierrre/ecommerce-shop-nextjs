@@ -11,10 +11,10 @@ export type SpecialtyCoffee = Product & {
   roastLevelDetail?: RoastLevelDetail;
   processingMethod: ProcessingMethod;
   /*
-      Elevation in meters.
-      Array of one number gives an approximate elevation.
-      Array of two numbers gives a range.
-    */
+        Elevation in meters.
+        Array of one number gives an approximate elevation.
+        Array of two numbers gives a range.
+      */
   elevation?: number[];
   certifications: Certification[];
   isDecaf: boolean;

@@ -4,6 +4,33 @@ const calculatePriceFor1kg = (priceFor250g: number): number => {
   return priceFor250g * 4 * 0.9;
 };
 
+export const CoffeeCodesMappings = {
+  C0001: "Ethiopia Yirgacheffe",
+  C0002: "Colombia Huila Supremo",
+  C0003: "Guatemala Antigua",
+  C0004: "Kenya AA Nyeri",
+  C0005: "Sumatra Mandheling",
+  C0006: "Brazil Santos",
+  C0007: "Honduras Marcala Organic",
+  C0008: "Panama Geisha",
+  C0009: "Espresso Harmony Blend",
+  C0010: "Tanzania Peaberry",
+  C0011: "Ethiopia Sidamo",
+  C0012: "Nicaragua Decaf (Filter)",
+  C0013: "Costa Rica Tarrazú",
+  C0014: "Mexico Chiapas Decaf (Filter)",
+  C0015: "Peru Cajamarca Decaf (Espresso)",
+};
+
+export const GrindSizeCodeMappings = {
+  G01: "Whole beans",
+  G02: "Chemex",
+  G03: "V60",
+  G04: "Espresso",
+  G05: "French press",
+  G06: "Moka pot",
+};
+
 export const specialtyCoffees: SpecialtyCoffee[] = [
   {
     id: "38ed1c67-bd76-4f4d-a4cc-3925b546c713",

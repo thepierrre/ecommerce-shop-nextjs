@@ -27,6 +27,8 @@ export const grindSizes = [
   "French press",
 ] as const;
 
+export type GrindSizeCode = "G01" | "G02" | "G03" | "G04" | "G05" | "G06";
+
 export type Address = {
   line1: string;
   line2?: string;
