@@ -1,35 +1,55 @@
 import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
-import { grindSizes, GrindSize } from "@/app/lib/definitions/shared";
+import { GrindSize, grindSizes } from "@/app/lib/definitions/shared";
 import { clsx } from "clsx";
 import { useState } from "react";
+import Form from "next/form";
+import { addToCart } from "@/app/lib/actions";
 
 export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
   const [selectedNetWeight, setSelectedNetWeight] = useState<"250g" | "1kg">(
     "250g",
   );
-  const [selectedGrindType, setSelectedGrindType] =
-    useState<GrindSize>("Whole beans");
+  const [selectedGrindSize, setSelectedGrindSize] = useState<GrindSize>(
+    GrindSize.WHOLE_BEANS,
+  );
+  const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
 
-  const onSelectedNetWeightChange = (value: "250g" | "1kg") => {
+  const onNetWeightChange = (value: "250g" | "1kg") => {
+    setSelectedQuantity(1);
     setSelectedNetWeight(value);
   };
 
-  const onSelectedGrindTypeChange = (value: GrindSize) => {
-    setSelectedGrindType(value);
+  const onGrindSizeChange = (value: GrindSize) => {
+    setSelectedQuantity(1);
+    setSelectedGrindSize(value);
   };
 
-  const displayPriceForUnit = () => {
+  const onMinusButtonClick = () => {
+    if (selectedQuantity <= 1) {
+      return;
+    }
+    setSelectedQuantity((prevState) => prevState - 1);
+  };
+
+  const onPlusButtonClick = () => {
+    if (selectedQuantity >= 10) {
+      return;
+    }
+    setSelectedQuantity((prevState) => prevState + 1);
+  };
+
+  const calculatePriceForUnit = (): number => {
     if (selectedNetWeight === "250g") {
       return product.priceFor250g / 100;
     }
-    return (product.priceFor1kg / 100).toFixed(2);
+    return product.priceFor1kg / 100;
   };
 
-  const displayPriceFor1kg = () => {
+  const calculatePriceFor1kg = (): number => {
     if (selectedNetWeight === "250g") {
       return (product.priceFor250g * 4) / 100;
     }
-    return (product.priceFor1kg / 100).toFixed(2);
+    return product.priceFor1kg / 100;
   };
 
   const classNames = {
@@ -44,7 +64,7 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
         <h3 className="text-2xl my-4">Net weight</h3>
         <div className="flex gap-4">
           <button
-            onClick={() => onSelectedNetWeightChange("250g")}
+            onClick={() => onNetWeightChange("250g")}
             className={clsx(
               selectedNetWeight === "250g"
                 ? classNames.optionButtonActive
@@ -55,7 +75,7 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
             250 g
           </button>
           <button
-            onClick={() => onSelectedNetWeightChange("1kg")}
+            onClick={() => onNetWeightChange("1kg")}
             className={clsx(
               selectedNetWeight === "1kg"
                 ? classNames.optionButtonActive
@@ -68,14 +88,14 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
         </div>
       </div>
       <div>
-        <h3 className="text-2xl my-4">Grind type</h3>
+        <h3 className="text-2xl my-4">Grind size</h3>
         <div className="flex flex-wrap gap-4">
           {grindSizes.map((grindSize) => (
             <button
-              onClick={() => onSelectedGrindTypeChange(grindSize)}
+              onClick={() => onGrindSizeChange(grindSize as GrindSize)}
               key={grindSize}
               className={clsx(
-                selectedGrindType === grindSize
+                selectedGrindSize === grindSize
                   ? classNames.optionButtonActive
                   : classNames.optionButton,
                 classNames.optionButtonHover,
@@ -87,18 +107,53 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
         </div>
       </div>
 
-      <p className="text-4xl">€ {displayPriceForUnit()}</p>
+      <p className="text-4xl">
+        € {(calculatePriceForUnit() * selectedQuantity).toFixed(2)}
+      </p>
 
-      <div className="flex gap-4">
+      <Form action={addToCart} className="flex gap-4">
         <div className="flex gap-4">
-          <button>—</button>
-          <input defaultValue="1" className="border border-black" />
-          <button>+</button>
-        </div>
-        <button>Add to cart</button>
-      </div>
+          <div>
+            <input type="hidden" name="net-weight" value={selectedNetWeight} />
+            <input type="hidden" name="quantity" value={selectedQuantity} />
+            <input
+              type="hidden"
+              name="product-code"
+              value={product.productCode}
+            />
+            <input type="hidden" name="grind-size" value={selectedGrindSize} />
+            <input type="hidden" name="net-weight" value={selectedNetWeight} />
+            <input
+              type="hidden"
+              name="price-for-250g"
+              value={product.priceFor250g}
+            />
+            <input
+              type="hidden"
+              name="price-for-1kg"
+              value={product.priceFor1kg}
+            />
+          </div>
 
-      <p>€ {displayPriceFor1kg()}/kg</p>
+          <div>
+            <button type="button" onClick={() => onMinusButtonClick()}>
+              —
+            </button>
+            <div className="border border-black w-8 h-8">
+              {selectedQuantity}
+            </div>
+            <button type="button" onClick={() => onPlusButtonClick()}>
+              +
+            </button>
+          </div>
+
+          <div>
+            <button type="submit">Add to cart</button>
+          </div>
+        </div>
+      </Form>
+
+      <p>€ {calculatePriceFor1kg().toFixed(2)}/kg</p>
     </div>
   );
 }

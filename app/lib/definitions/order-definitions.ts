@@ -1,8 +1,4 @@
-import {
-  Address,
-  AccessoryItem,
-  CoffeeItem,
-} from "@/app/lib/definitions/shared";
+import { Address, Items } from "@/app/lib/definitions/shared";
 
 type ShippingMethod = "express" | "standard";
 
@@ -16,5 +12,5 @@ export type Order = {
   amount: number;
   shippingMethod: ShippingMethod;
   shippingAddress: Address;
-  items: (AccessoryItem | CoffeeItem)[];
+  items: Items[];
 };

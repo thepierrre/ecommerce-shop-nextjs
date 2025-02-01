@@ -8,7 +8,6 @@ interface Breadcrumb {
 }
 
 export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
-  console.log(breadcrumbs);
   return (
     <ul className="flex">
       {breadcrumbs.map((breadcrumb, index) => (

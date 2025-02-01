@@ -1,25 +1,31 @@
-type Item = {
-  productId: string;
-  price: number;
-  quantity: number;
+export type Product = {
+  id: string;
+  name: string;
+  productCode: string;
+  description: string;
 };
 
-export type AccessoryItem = Item;
+export type Items = {
+  [productWarehouseCode: string]: number;
+};
+
+export enum GrindSize {
+  WHOLE_BEANS = "Whole beans",
+  ESPRESSO = "Espresso",
+  MOKA_POT = "Moka pot",
+  CHEMEX = "Chemex",
+  V60 = "V60",
+  FRENCH_PRESS = "French press",
+}
 
 export const grindSizes = [
   "Whole beans",
-  "For espresso",
-  "For moka pot",
-  "For chemex",
-  "For V60",
-  "For French press",
+  "Espresso",
+  "Moka pot",
+  "Chemex",
+  "V60",
+  "French press",
 ] as const;
-
-export type GrindSize = (typeof grindSizes)[number];
-
-export type CoffeeItem = Item & {
-  grindSize: GrindSize;
-};
 
 export type Address = {
   line1: string;

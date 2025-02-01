@@ -15,8 +15,6 @@ export default function Page() {
   const productName = decodeURI(params.name);
   const product = fetchCoffeeByName(productName);
 
-  console.log("product: ", product);
-
   const label =
     params.productType === "filter-coffees"
       ? "Filter Coffees"

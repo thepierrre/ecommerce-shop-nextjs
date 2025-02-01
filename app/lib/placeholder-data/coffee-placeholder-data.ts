@@ -7,6 +7,7 @@ const calculatePriceFor1kg = (priceFor250g: number): number => {
 export const specialtyCoffees: SpecialtyCoffee[] = [
   {
     id: "38ed1c67-bd76-4f4d-a4cc-3925b546c713",
+    productCode: "C0001",
     name: "Ethiopia Yirgacheffe",
     description:
       "A floral and citrusy coffee from the Yirgacheffe region, " +
@@ -35,6 +36,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "a4519867-6b38-4c5a-8fcf-f1ea3e9b10c9",
+    productCode: "C0002",
     name: "Colombia Huila Supremo",
     description:
       "Rich and smooth, this Colombian coffee offers notes of chocolate, " +
@@ -62,6 +64,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "f6cbd4dc-e9e8-4b63-9d45-9b725a682ce6",
+    productCode: "C0003",
     name: "Guatemala Antigua",
     description:
       "From the Antigua region, " +
@@ -90,6 +93,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "1c71639b-bbfa-4c7b-91e3-91c8f4de758b",
+    productCode: "C0004",
     name: "Kenya AA Nyeri",
     description:
       "A bold and fruity coffee from Nyeri " +
@@ -118,6 +122,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "04f9e1c2-7097-45a0-a24e-5fc48bd6d589",
+    productCode: "C0005",
     name: "Sumatra Mandheling",
     description:
       "Earthy and bold, with spicy dark chocolate notes. " +
@@ -145,6 +150,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "c5a9c05d-3b95-481b-b5ff-4e2b705ecf82",
+    productCode: "C0006",
     name: "Brazil Santos",
     description:
       "A smooth, nutty coffee " +
@@ -172,6 +178,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "42688af2-8bcd-47a3-b8f0-90258f7d86e5",
+    productCode: "C0007",
     name: "Honduras Marcala Organic",
     description:
       "Tropical fruit, honey, and almond notes " +
@@ -199,6 +206,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "b3ec2e65-8177-46a8-bc5e-e7a6b274a963",
+    productCode: "C0008",
     name: "Panama Geisha",
     description:
       "Luxurious and rare, this Panama Geisha offers jasmine, " +
@@ -226,6 +234,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "75927cfa-d8f1-4664-a6df-00e8e2ac8957",
+    productCode: "C0009",
     name: "Espresso Harmony Blend",
     description:
       "A bold blend of 80% Arabica and 20% Robusta, " +
@@ -249,6 +258,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "a9bf46dc-70f3-4c0a-9c90-78ea58c8a60e",
+    productCode: "C0010",
     name: "Tanzania Peaberry",
     description:
       "A rare coffee with vibrant citrus, black tea, " +
@@ -276,6 +286,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "e034cf9c-3b79-4f20-a9ea-efcb7d6d4694",
+    productCode: "C0011",
     name: "Ethiopia Sidamo",
     description:
       "Blueberry, floral, and honey flavors make this natural-processed " +
@@ -303,6 +314,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "1a9249a2-b563-497d-9af7-550ed97c640e",
+    productCode: "C0012",
     name: "Nicaragua Decaf (Filter)",
     description:
       "A smooth, decaffeinated coffee with notes of caramel, " +
@@ -330,6 +342,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "d4179bf1-680b-40d1-9c6d-bc95b1d6e6d1",
+    productCode: "C0013",
     name: "Costa Rica Tarrazú",
     description:
       "From Costa Rica's Tarrazú region, this honey-processed coffee " +
@@ -357,6 +370,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "1f2e68d3-7c5b-4b1c-a5b7-1d0a0f3c6174",
+    productCode: "C0014",
     name: "Mexico Chiapas Decaf (Filter)",
     description:
       "A decaffeinated coffee with chocolate, brown sugar, " +
@@ -385,6 +399,7 @@ export const specialtyCoffees: SpecialtyCoffee[] = [
   },
   {
     id: "6c9f0b5b-456e-4aa8-8f93-08f871abe639",
+    productCode: "C0015",
     name: "Peru Cajamarca Decaf (Espresso)",
     description:
       "Dark chocolate, toffee, and almond notes shine " +

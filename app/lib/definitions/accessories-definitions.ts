@@ -1,3 +1,5 @@
+import { Product } from "@/app/lib/definitions/shared";
+
 type Category =
   | "brewing equipment"
   | "filters"
@@ -9,10 +11,7 @@ type Category =
   | "cups and tumblers"
   | "other";
 
-export type Accessory = {
-  id: string;
-  name: string;
+export type Accessory = Product & {
   category: Category;
-  description: string;
   price: number;
 };

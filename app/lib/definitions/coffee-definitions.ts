@@ -1,7 +1,6 @@
-export type SpecialtyCoffee = {
-  id: string;
-  name: string;
-  description: string;
+import { Product } from "@/app/lib/definitions/shared";
+
+export type SpecialtyCoffee = Product & {
   originType: OriginType;
   singleOriginName?: SingleOriginName;
   beanType: BeanType;
@@ -12,10 +11,10 @@ export type SpecialtyCoffee = {
   roastLevelDetail?: RoastLevelDetail;
   processingMethod: ProcessingMethod;
   /*
-    Elevation in meters.
-    Array of one number gives an approximate elevation.
-    Array of two numbers gives a range.
-  */
+      Elevation in meters.
+      Array of one number gives an approximate elevation.
+      Array of two numbers gives a range.
+    */
   elevation?: number[];
   certifications: Certification[];
   isDecaf: boolean;
