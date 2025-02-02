@@ -4,7 +4,7 @@ const calculatePriceFor1kg = (priceFor250g: number): number => {
   return priceFor250g * 4 * 0.9;
 };
 
-export const CoffeeCodesMappings = {
+export const coffeeCodesMappings: Record<string, string> = {
   C0001: "Ethiopia Yirgacheffe",
   C0002: "Colombia Huila Supremo",
   C0003: "Guatemala Antigua",
@@ -22,7 +22,7 @@ export const CoffeeCodesMappings = {
   C0015: "Peru Cajamarca Decaf (Espresso)",
 };
 
-export const GrindSizeCodeMappings = {
+export const grindSizeCodeMappings: Record<string, string> = {
   G01: "Whole beans",
   G02: "Chemex",
   G03: "V60",
