@@ -2,7 +2,6 @@ import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
 import { GrindSize, grindSizes } from "@/app/lib/definitions/shared";
 import { clsx } from "clsx";
 import { useState } from "react";
-import Form from "next/form";
 import { addToCart } from "@/app/lib/actions/cart-actions";
 
 export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
@@ -111,7 +110,7 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
         € {(calculatePriceForUnit() * selectedQuantity).toFixed(2)}
       </p>
 
-      <Form action={addToCart} className="flex gap-4">
+      <form action={addToCart} className="flex gap-4">
         <div className="flex gap-4">
           <div>
             <input type="hidden" name="net-weight" value={selectedNetWeight} />
@@ -151,7 +150,7 @@ export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
             <button type="submit">Add to cart</button>
           </div>
         </div>
-      </Form>
+      </form>
 
       <p>€ {calculatePriceFor1kg().toFixed(2)}/kg</p>
     </div>
