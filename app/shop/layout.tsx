@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <CartPreview />
         </div>
       )}
-      <div className="relative top-16 mx-12">{children}</div>
+      <div className="relative top-20">{children}</div>
     </div>
   );
 }

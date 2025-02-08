@@ -16,3 +16,9 @@ export const defineGrandSizeCode = (grindSize: string): GrindSizeCode => {
       return "G06";
   }
 };
+
+export const isCheaperDeliveryThresholdReached = (
+  cartTotalPrice: number,
+): boolean => {
+  return cartTotalPrice > 50;
+};
