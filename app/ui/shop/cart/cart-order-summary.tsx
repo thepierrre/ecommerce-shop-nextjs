@@ -1,11 +1,8 @@
 import { Cart } from "@/app/lib/definitions/cart-definitions";
-import { useState } from "react";
 import { isCheaperDeliveryThresholdReached } from "@/app/lib/utils/cart-utils";
 
 export default function CartOrderSummary({ cart }: { cart: Cart }) {
-  const [isDeliveryFree, setIsDeliveryFree] = useState<boolean>(
-    isCheaperDeliveryThresholdReached(cart.totalPrice),
-  );
+  const isDeliveryFree = isCheaperDeliveryThresholdReached(cart.totalPrice);
 
   const getStandardDeliveryPrice = (): "€2.99" | "free" => {
     if (isDeliveryFree) return "free";
