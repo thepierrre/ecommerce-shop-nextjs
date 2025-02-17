@@ -7,13 +7,13 @@ import {
   fetchFilterCoffees,
 } from "@/app/lib/actions/fetch-actions";
 import { useParams } from "next/navigation";
-import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
+import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";
 import { useStore } from "@/app/lib/store/store";
 
 export default function Page() {
   const { productType } = useParams<{ productType: string }>();
-  let fetchedCoffees: SpecialtyCoffee[] = [];
+  let fetchedCoffees: Coffee[] = [];
 
   switch (productType) {
     case "all-coffees":
@@ -53,7 +53,7 @@ export default function Page() {
     }
   };
 
-  const coffees = fetchedCoffees.map((coffee: SpecialtyCoffee) => (
+  const coffees = fetchedCoffees.map((coffee: Coffee) => (
     <div key={coffee.id} className="border border-black bg-gray-300 w-80 h-112">
       <Link
         href={`/shop/${getProductNameForUrl(coffee.brewMethod, coffee.isDecaf)}/${coffee.name}`}

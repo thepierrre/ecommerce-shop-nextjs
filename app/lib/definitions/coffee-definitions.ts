@@ -1,8 +1,8 @@
 import { Product } from "@/app/lib/definitions/shared";
 
-export type SpecialtyCoffee = Product & {
+export type Coffee = Product & {
   originType: OriginType;
-  singleOriginName?: SingleOriginName;
+  singleOriginName?: string;
   beanType: BeanType;
   blendRatio?: string;
   roastingLocation: string;
@@ -11,15 +11,13 @@ export type SpecialtyCoffee = Product & {
   roastLevelDetail?: RoastLevelDetail;
   processingMethod: ProcessingMethod;
   /*
-        Elevation in meters.
-        Array of one number gives an approximate elevation.
-        Array of two numbers gives a range.
-      */
-  elevation?: number[];
+                  Elevation in meters.
+                  Array of one number gives an approximate elevation.
+                  Array of two numbers gives a range.
+                */
   certifications: Certification[];
   isDecaf: boolean;
   primaryFlavors: string[];
-  secondaryFlavors?: string[];
   body: Body;
   acidity: Acidity;
   priceFor250g: number;
@@ -33,12 +31,6 @@ type BrewMethod = "filter" | "espresso";
 type Body = "light" | "medium" | "full";
 
 type Acidity = "light" | "medium" | "high";
-
-type SingleOriginName = {
-  country: string;
-  region: string;
-  farm?: string;
-};
 
 type ProcessingMethod =
   | "washed"

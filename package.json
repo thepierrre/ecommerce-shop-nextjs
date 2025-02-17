@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.0.0",
+    "@vercel/postgres": "^0.10.0",
     "clsx": "^2.1.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",

@@ -1,10 +1,10 @@
-import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
+import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import { GrindSize, grindSizes } from "@/app/lib/definitions/shared";
 import { clsx } from "clsx";
 import { useState } from "react";
 import { addToCart } from "@/app/lib/actions/cart-actions";
 
-export default function CartPanel({ product }: { product: SpecialtyCoffee }) {
+export default function CartPanel({ product }: { product: Coffee }) {
   const [selectedNetWeight, setSelectedNetWeight] = useState<"250g" | "1kg">(
     "250g",
   );

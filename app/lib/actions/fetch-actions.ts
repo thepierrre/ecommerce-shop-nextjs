@@ -1,31 +1,29 @@
-import { SpecialtyCoffee } from "@/app/lib/definitions/coffee-definitions";
+import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import { specialtyCoffees } from "@/app/lib/placeholder-data/coffee-placeholder-data";
 import { Accessory } from "@/app/lib/definitions/accessories-definitions";
 import { accessories } from "@/app/lib/placeholder-data/accessories-placeholder-data";
 
-export const fetchAllCoffees = (): SpecialtyCoffee[] => {
+export const fetchAllCoffees = (): Coffee[] => {
   return specialtyCoffees;
 };
 
-export const fetchDecafs = (): SpecialtyCoffee[] => {
+export const fetchDecafs = (): Coffee[] => {
   return specialtyCoffees.filter((coffee) => coffee.isDecaf);
 };
 
-export const fetchFilterCoffees = (): SpecialtyCoffee[] => {
+export const fetchFilterCoffees = (): Coffee[] => {
   return specialtyCoffees.filter(
     (coffee) => coffee.brewMethod === "filter" && !coffee.isDecaf,
   );
 };
 
-export const fetchEspressos = (): SpecialtyCoffee[] => {
+export const fetchEspressos = (): Coffee[] => {
   return specialtyCoffees.filter(
     (coffee) => coffee.brewMethod === "espresso" && !coffee.isDecaf,
   );
 };
 
-export const fetchCoffeeByName = (
-  coffeeName: string,
-): SpecialtyCoffee | null => {
+export const fetchCoffeeByName = (coffeeName: string): Coffee | null => {
   const coffee = specialtyCoffees.find((coffee) => coffee.name === coffeeName);
   if (!coffee) {
     return null;
