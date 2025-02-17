@@ -1,125 +1,45 @@
-"use client";
-
 import { fetchAllCoffees } from "@/app/lib/actions/fetch-actions";
-import { useParams } from "next/navigation";
+import {
+  fetchDecafCoffees,
+  fetchEspressoCoffees,
+  fetchFilterCoffees,
+} from "@/app/lib/data";
+import ProductTypeView from "@/app/ui/shop/product-type-page/product-type-view";
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
-import Link from "next/link";
-import { useStore } from "@/app/lib/store/store";
-// import {
-//   fetchDecafCoffees,
-//   fetchEspressoCoffees,
-//   fetchFilterCoffees,
-// } from "@/app/lib/data";
-import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
 
-export default function Page() {
-  const [fetchedCoffees, setFetchedCoffees] = useState<Coffee[]>([]);
-  const { productType } = useParams<{ productType: string }>();
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ productType: string }>;
+}) {
+  const { productType } = await params;
 
-  useEffect(() => {
-    let fetchedCoffees: Coffee[] = [];
-
-    // async function fetchCoffees() {
-    //   switch (productType) {
-    //     case "all-coffees":
-    //       fetchedCoffees = fetchAllCoffees();
-    //       break;
-    //     case "filter-coffees":
-    //       fetchedCoffees = await fetchFilterCoffees();
-    //       break;
-    //     case "espresso-coffees":
-    //       fetchedCoffees = await fetchEspressoCoffees();
-    //       break;
-    //     case "decaf-coffees":
-    //       fetchedCoffees = await fetchDecafCoffees();
-    //       break;
-    //   }
-    // }
-
-    async function fetchCoffees() {
-      switch (productType) {
-        case "all-coffees":
-          fetchedCoffees = fetchAllCoffees();
-          break;
-        case "filter-coffees":
-          fetchedCoffees = [];
-          break;
-        case "espresso-coffees":
-          fetchedCoffees = [];
-          break;
-        case "decaf-coffees":
-          fetchedCoffees = [];
-          break;
-      }
+  async function fetchCoffees() {
+    switch (productType) {
+      case "all-coffees":
+        return fetchAllCoffees();
+      case "filter-coffees":
+        return await fetchFilterCoffees();
+      case "espresso-coffees":
+        return await fetchEspressoCoffees();
+      case "decaf-coffees":
+        return await fetchDecafCoffees();
+      default:
+        return [] as Coffee[];
     }
+  }
 
-    if (productType) {
-      fetchCoffees();
-      setFetchedCoffees(fetchedCoffees);
-    }
-  }, [productType]);
+  const fetchedCoffees = await fetchCoffees();
 
-  const showCartPreview = useStore((state) => state.showCartPreview);
-
-  const primaryFlavors = (coffeeId: string) => {
-    return fetchedCoffees
-      .find((coffee) => coffee.id === coffeeId)
-      ?.primaryFlavors.join(", ");
-  };
-
-  const getProductNameForUrl = (
-    coffeeBrewMethod: "espresso" | "filter",
-    isDecaf: boolean,
-  ): string => {
-    if (isDecaf) {
-      return "decaf-coffees";
-    }
-
-    if (coffeeBrewMethod === "espresso") {
-      return "espresso-coffees";
-    } else {
-      return "filter-coffees";
-    }
-  };
-
-  const coffees = fetchedCoffees.map((coffee: Coffee) => (
-    <div key={coffee.id} className="border border-black bg-gray-300 w-80 h-112">
-      <Link
-        href={`/shop/${getProductNameForUrl(coffee.brewMethod, coffee.isDecaf)}/${coffee.name}`}
-      >
-        <div className="bg-gray-700 h-3/5"></div>
-      </Link>
-      <div className="p-2">
-        <h1 className="text-xl text-center mb-4">{coffee.name}</h1>
-        <p className="text-center">{primaryFlavors(coffee.id)}</p>
-        <p className="text-center">{coffee.roastLevel}</p>
-        <p className="text-center">From €{coffee.priceFor250g / 100}</p>
-      </div>
-      <div className="flex justify-center">
-        <button onClick={() => showCartPreview()}>Add to cart</button>
-      </div>
-    </div>
-  ));
-
-  const heading =
-    productType === "filter-coffees"
-      ? "Filter Coffees"
-      : productType === "espresso-coffees"
-        ? "Espresso Coffees"
-        : productType === "accessories"
-          ? "Accessories"
-          : productType === "all-coffees"
-            ? "All Coffees"
-            : productType === "decaf-coffees"
-              ? "Decaf Coffees"
-              : "";
+  if (!fetchedCoffees) {
+    notFound();
+  }
 
   return (
-    <div className="">
-      <h1 className="text-center text-6xl my-8">{heading}</h1>
-      <div className="flex justify-center">
-        <div className="grid grid-cols-4 gap-8">{coffees}</div>
-      </div>
-    </div>
+    <ProductTypeView
+      fetchedCoffees={fetchedCoffees}
+      productType={productType}
+    />
   );
 }
