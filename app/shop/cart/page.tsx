@@ -2,9 +2,28 @@
 
 import CartArticles from "@/app/ui/shop/cart/cart-articles";
 import CartOrderSummary from "@/app/ui/shop/cart/cart-order-summary";
+import { useEffect, useState } from "react";
+import { Cart } from "@/app/lib/definitions/cart-definitions";
 
 export default function Page() {
-  const cart = JSON.parse(localStorage.getItem("coffeeshop-cart") as string);
+  const [cart, setCart] = useState<Cart | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("coffeeshop-cart");
+      if (storedCart) {
+        try {
+          setCart(JSON.parse(storedCart));
+        } catch (error) {
+          console.error(
+            "Error parsing the cart from the local storage: ",
+            error,
+          );
+          setCart(null);
+        }
+      }
+    }
+  }, []);
 
   return cart ? (
     <div className="flex">
