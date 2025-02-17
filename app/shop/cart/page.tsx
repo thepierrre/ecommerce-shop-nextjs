@@ -6,7 +6,7 @@ import CartOrderSummary from "@/app/ui/shop/cart/cart-order-summary";
 export default function Page() {
   const cart = JSON.parse(localStorage.getItem("coffeeshop-cart") as string);
 
-  return (
+  return cart ? (
     <div className="flex">
       <section id="shopping-cart" className="w-35/50 h-full">
         <CartArticles cart={cart} />
@@ -14,6 +14,10 @@ export default function Page() {
       <section id="order-summary" className="w-15/50 h-screen bg-gray-100">
         <CartOrderSummary cart={cart} />
       </section>
+    </div>
+  ) : (
+    <div>
+      <h1>Your cart is empty</h1>
     </div>
   );
 }
