@@ -21,13 +21,12 @@ async function seedCoffees() {
         roast_level VARCHAR(255) NOT NULL,
         roast_level_detail VARCHAR(255),
         processing_method VARCHAR(255) NOT NULL,
-        certifications TEXT[] NOT NULL,
         is_decaf BOOLEAN NOT NULL,
         primary_flavors TEXT[] NOT NULL,
         body VARCHAR(255) NOT NULL,
         acidity VARCHAR(255) NOT NULL,
-        price_for_250g INTEGER NOT NULL,
-        price_for_1kg INTEGER NOT NULL
+        price_for_250g VARCHAR(255) NOT NULL,
+        price_for_1kg VARCHAR(255) NOT NULL
         );
     `;
 
@@ -47,7 +46,6 @@ async function seedCoffees() {
                                      roast_level,
                                      roast_level_detail,
                                      processing_method,
-                                     certifications,
                                      is_decaf,
                                      primary_flavors,
                                      body,
@@ -67,15 +65,10 @@ async function seedCoffees() {
                         ${coffee.roastLevel},
                         ${coffee.roastLevelDetail},
                         ${coffee.processingMethod},
-                        ${
-                          coffee.certifications.length > 0
-                            ? `{${coffee.certifications.map((c) => `"${c}"`).join(",")}}`
-                            : "'{}'"
-                        }::text[],
                         ${coffee.isDecaf},
                         ${
                           coffee.primaryFlavors.length > 0
-                            ? `{${coffee.primaryFlavors.map((f) => `"${f}"`).join(",")}}`
+                            ? `{${coffee.primaryFlavors.map((flavor) => `"${flavor}"`).join(",")}}`
                             : "'{}'"
                         }::text[],
                         ${coffee.body},
@@ -93,6 +86,8 @@ export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedCoffees();
+
+    return Response.json({ message: "Database seeded successfully" });
   } catch (error) {
     await client.sql`ROLLBACK`;
     return Response.json({ error }, { status: 500 });

@@ -1,34 +1,46 @@
 "use client";
 
-import {
-  fetchAllCoffees,
-  fetchDecafs,
-  fetchEspressos,
-  fetchFilterCoffees,
-} from "@/app/lib/actions/fetch-actions";
+import { fetchAllCoffees } from "@/app/lib/actions/fetch-actions";
 import { useParams } from "next/navigation";
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";
 import { useStore } from "@/app/lib/store/store";
+import {
+  fetchDecafCoffees,
+  fetchEspressoCoffees,
+  fetchFilterCoffees,
+} from "@/app/lib/data";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [fetchedCoffees, setFetchedCoffees] = useState<Coffee[]>([]);
   const { productType } = useParams<{ productType: string }>();
-  let fetchedCoffees: Coffee[] = [];
 
-  switch (productType) {
-    case "all-coffees":
-      fetchedCoffees = fetchAllCoffees();
-      break;
-    case "filter-coffees":
-      fetchedCoffees = fetchFilterCoffees();
-      break;
-    case "espresso-coffees":
-      fetchedCoffees = fetchEspressos();
-      break;
-    case "decaf-coffees":
-      fetchedCoffees = fetchDecafs();
-      break;
-  }
+  useEffect(() => {
+    let fetchedCoffees: Coffee[] = [];
+
+    async function fetchCoffees() {
+      switch (productType) {
+        case "all-coffees":
+          fetchedCoffees = fetchAllCoffees();
+          break;
+        case "filter-coffees":
+          fetchedCoffees = await fetchFilterCoffees();
+          break;
+        case "espresso-coffees":
+          fetchedCoffees = await fetchEspressoCoffees();
+          break;
+        case "decaf-coffees":
+          fetchedCoffees = await fetchDecafCoffees();
+          break;
+      }
+    }
+
+    if (productType) {
+      fetchCoffees();
+      setFetchedCoffees(fetchedCoffees);
+    }
+  }, [productType]);
 
   const showCartPreview = useStore((state) => state.showCartPreview);
 
