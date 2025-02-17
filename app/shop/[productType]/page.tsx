@@ -5,11 +5,11 @@ import { useParams } from "next/navigation";
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import Link from "next/link";
 import { useStore } from "@/app/lib/store/store";
-import {
-  fetchDecafCoffees,
-  fetchEspressoCoffees,
-  fetchFilterCoffees,
-} from "@/app/lib/data";
+// import {
+//   fetchDecafCoffees,
+//   fetchEspressoCoffees,
+//   fetchFilterCoffees,
+// } from "@/app/lib/data";
 import { useEffect, useState } from "react";
 
 export default function Page() {
@@ -19,19 +19,36 @@ export default function Page() {
   useEffect(() => {
     let fetchedCoffees: Coffee[] = [];
 
+    // async function fetchCoffees() {
+    //   switch (productType) {
+    //     case "all-coffees":
+    //       fetchedCoffees = fetchAllCoffees();
+    //       break;
+    //     case "filter-coffees":
+    //       fetchedCoffees = await fetchFilterCoffees();
+    //       break;
+    //     case "espresso-coffees":
+    //       fetchedCoffees = await fetchEspressoCoffees();
+    //       break;
+    //     case "decaf-coffees":
+    //       fetchedCoffees = await fetchDecafCoffees();
+    //       break;
+    //   }
+    // }
+
     async function fetchCoffees() {
       switch (productType) {
         case "all-coffees":
           fetchedCoffees = fetchAllCoffees();
           break;
         case "filter-coffees":
-          fetchedCoffees = await fetchFilterCoffees();
+          fetchedCoffees = [];
           break;
         case "espresso-coffees":
-          fetchedCoffees = await fetchEspressoCoffees();
+          fetchedCoffees = [];
           break;
         case "decaf-coffees":
-          fetchedCoffees = await fetchDecafCoffees();
+          fetchedCoffees = [];
           break;
       }
     }
