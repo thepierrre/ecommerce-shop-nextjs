@@ -1,19 +1,19 @@
-import { db } from "@vercel/postgres";
-
-const client = await db.connect();
-
-async function listCoffees() {
-  const data = await client.sql`
-        SELECT *
-        FROM coffees;`;
-
-  return data.rows;
-}
-
-export async function GET() {
-  try {
-    return Response.json(await listCoffees());
-  } catch (error) {
-    return Response.json({ error }, { status: 500 });
-  }
-}
+// import { db } from "@vercel/postgres";
+//
+// const client = await db.connect();
+//
+// async function listCoffees() {
+//   const data = await client.sql`
+//         SELECT *
+//         FROM coffees;`;
+//
+//   return data.rows;
+// }
+//
+// export async function GET() {
+//   try {
+//     return Response.json(await listCoffees());
+//   } catch (error) {
+//     return Response.json({ error }, { status: 500 });
+//   }
+// }
