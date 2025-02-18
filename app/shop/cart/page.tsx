@@ -5,7 +5,7 @@ import CartOrderSummary from "@/app/ui/shop/cart/cart-order-summary";
 import { useEffect, useState } from "react";
 import { Cart } from "@/app/lib/definitions/cart-definitions";
 
-export default function Page() {
+export default function CartPage() {
   const [cart, setCart] = useState<Cart | null>(null);
 
   useEffect(() => {
