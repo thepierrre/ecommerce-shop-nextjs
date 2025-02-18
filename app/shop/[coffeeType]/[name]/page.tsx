@@ -2,6 +2,7 @@ import { Breadcrumbs } from "@/app/ui/shop/breadcrumbs";
 import { fetchCoffeeByName } from "@/app/lib/actions/fetch-actions";
 import CartPanel from "@/app/ui/shop/coffee-page/cart-panel";
 import ProductPanel from "@/app/ui/shop/coffee-page/product-panel";
+import { notFound } from "next/navigation";
 
 export default async function CoffeeItemPage({
   params,
@@ -20,7 +21,7 @@ export default async function CoffeeItemPage({
   };
 
   if (!fetchedCoffee) {
-    return null;
+    notFound();
   }
 
   return (

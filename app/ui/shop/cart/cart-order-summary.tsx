@@ -1,5 +1,5 @@
 import { Cart } from "@/app/lib/definitions/cart-definitions";
-import { isCheaperDeliveryThresholdReached } from "@/app/lib/utils/cart-utils";
+import { isCheaperDeliveryThresholdReached } from "@/app/lib/util/cart-utils";
 
 export default function CartOrderSummary({ cart }: { cart: Cart }) {
   const isDeliveryFree = isCheaperDeliveryThresholdReached(cart.totalPrice);

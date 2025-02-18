@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { Cart } from "@/app/lib/definitions/cart-definitions";
 import { grindSizes } from "@/app/lib/definitions/shared";
-import { defineGrandSizeCode } from "@/app/lib/utils/cart-utils";
+import { defineGrandSizeCode } from "@/app/lib/util/cart-utils";
 
 const CartItemSchema = z.object({
   productCode: z.string(),
@@ -28,7 +28,7 @@ export const addToCart = (formData: FormData) => {
   });
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
+    console.error(validatedFields.error.flatten().fieldErrors);
     return;
   }
 

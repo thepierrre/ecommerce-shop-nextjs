@@ -3,26 +3,6 @@ import { specialtyCoffees } from "@/app/lib/placeholder-data/coffee-placeholder-
 import { Accessory } from "@/app/lib/definitions/accessories-definitions";
 import { accessories } from "@/app/lib/placeholder-data/accessories-placeholder-data";
 
-export const fetchAllCoffees = (): Coffee[] => {
-  return specialtyCoffees;
-};
-
-export const fetchDecafs = (): Coffee[] => {
-  return specialtyCoffees.filter((coffee) => coffee.isDecaf);
-};
-
-export const fetchFilterCoffees = (): Coffee[] => {
-  return specialtyCoffees.filter(
-    (coffee) => coffee.brewMethod === "filter" && !coffee.isDecaf,
-  );
-};
-
-export const fetchEspressos = (): Coffee[] => {
-  return specialtyCoffees.filter(
-    (coffee) => coffee.brewMethod === "espresso" && !coffee.isDecaf,
-  );
-};
-
 export const fetchCoffeeByName = (coffeeName: string): Coffee | null => {
   const coffee = specialtyCoffees.find((coffee) => coffee.name === coffeeName);
   if (!coffee) {
