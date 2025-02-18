@@ -1,7 +1,7 @@
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 
 const calculatePriceFor1kg = (priceFor250g: number): number => {
-  return priceFor250g * 4 * 0.9;
+  return Math.round(priceFor250g * 4 * 0.9);
 };
 
 export const coffeeCodesMappings: Record<string, string> = {
