@@ -6,20 +6,19 @@ import { useStore } from "@/app/lib/store/store";
 
 interface Props {
   fetchedCoffees: Coffee[];
-  productType: string;
+  coffeeType: string;
 }
 
-const productTypeToHeadingMap: Record<string, string> = {
+const coffeeTypeToHeading: Record<string, string> = {
   "filter-coffees": "Filter coffees",
   "espresso-coffees": "Espresso coffees",
   "decaf-coffees": "Decaf coffees",
-  accessories: "Accessories",
   "all-coffees": "All coffees",
 };
 
-export default function ProductTypeView({
+export default function CoffeeTypePageView({
   fetchedCoffees,
-  productType,
+  coffeeType,
 }: Props) {
   const showCartPreview = useStore((state) => state.showCartPreview);
 
@@ -63,7 +62,7 @@ export default function ProductTypeView({
     </div>
   ));
 
-  const heading = productTypeToHeadingMap[productType] ?? "";
+  const heading = coffeeTypeToHeading[coffeeType] ?? "";
 
   return (
     <div className="">
