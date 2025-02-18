@@ -1,6 +1,17 @@
 import { sql } from "@vercel/postgres";
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 
+export async function fetchAllCoffees() {
+  try {
+    const data = await sql<Coffee>`SELECT *
+                                       FROM coffees`;
+    return data.rows;
+  } catch (error) {
+    console.error("Database error: ", error);
+    throw new Error("Failed to fetch coffees.");
+  }
+}
+
 export async function fetchFilterCoffees() {
   try {
     const data = await sql<Coffee>`SELECT *
