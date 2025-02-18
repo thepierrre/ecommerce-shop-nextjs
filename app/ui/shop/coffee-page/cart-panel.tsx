@@ -1,3 +1,5 @@
+"use client";
+
 import { Coffee } from "@/app/lib/definitions/coffee-definitions";
 import { GrindSize, grindSizes } from "@/app/lib/definitions/shared";
 import { clsx } from "clsx";
